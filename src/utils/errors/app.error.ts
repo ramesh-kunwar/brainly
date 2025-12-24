@@ -60,3 +60,15 @@ export class UnauthorizedError implements AppError {
     this.name = "Unauthorized";
   }
 }
+
+export class DuplicateTagsError implements AppError {
+  statusCode: number;
+  message: string;
+  name: string;
+
+  constructor(message: string = "Tags already exists") {
+    this.statusCode = 409;
+    this.message = message;
+    this.name = "DuplicateTagsError";
+  }
+}
