@@ -48,3 +48,15 @@ export class InvalidCredentialsError implements AppError {
     this.name = "InvalidCredentials";
   }
 }
+
+export class UnauthorizedError implements AppError {
+  statusCode: number;
+  message: string;
+  name: string;
+
+  constructor(message: string = "Unauthorized") {
+    this.statusCode = 401;
+    this.message = message;
+    this.name = "Unauthorized";
+  }
+}

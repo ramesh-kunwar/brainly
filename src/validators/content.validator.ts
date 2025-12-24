@@ -13,4 +13,5 @@ export const contentSchema = z.object({
     required_error: "Content Type is required",
   }),
   userId: z.string(),
+  tags: z.string(),
 });

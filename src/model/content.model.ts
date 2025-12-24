@@ -21,6 +21,11 @@ const contentModel = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    tags: {
+      type: mongoose.Types.ObjectId,
+      ref: "Tag",
+      requried: true,
+    },
   },
   { timestamps: true }
 );
