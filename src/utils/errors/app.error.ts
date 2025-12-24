@@ -24,3 +24,27 @@ export class DuplicateEmailError implements AppError {
     this.name = "DuplicateEmailError";
   }
 }
+
+export class UserNotFoundError implements AppError {
+  statusCode: number;
+  message: string;
+  name: string;
+
+  constructor(message: string = "User not found") {
+    this.statusCode = 400;
+    this.message = message;
+    this.name = "UserNotFound";
+  }
+}
+
+export class InvalidCredentialsError implements AppError {
+  statusCode: number;
+  message: string;
+  name: string;
+
+  constructor(message: string = "Invalid credentials") {
+    this.statusCode = 400;
+    this.message = message;
+    this.name = "InvalidCredentials";
+  }
+}
