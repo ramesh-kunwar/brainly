@@ -49,3 +49,22 @@ export const addContent = async (
     next(error);
   }
 };
+
+export const getAllContent = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const content = await contentModel.find();
+
+    res.status(201).json({
+      success: true,
+      message: "Content fetched successfully",
+      count: content.length,
+      data: content,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
