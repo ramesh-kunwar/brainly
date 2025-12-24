@@ -56,8 +56,7 @@ export const getAllContent = async (
   next: NextFunction
 ) => {
   try {
-    const content = await contentModel.find();
-
+    const content = await contentModel.find().populate({ path: "tags" });
     res.status(201).json({
       success: true,
       message: "Content fetched successfully",
