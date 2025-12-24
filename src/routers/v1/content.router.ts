@@ -3,6 +3,7 @@ import { validateRequestBody } from "../../validators";
 import { contentSchema } from "../../validators/content.validator";
 import {
   addContent,
+  deleteContentById,
   getAllContent,
   getContentByID,
 } from "../../controllers/content.controller";
@@ -24,5 +25,12 @@ contentRouter.get(
   isAuthenticated,
 
   getContentByID
+);
+
+contentRouter.delete(
+  "/:id",
+  isAuthenticated,
+
+  deleteContentById
 );
 export default contentRouter;

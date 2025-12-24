@@ -86,3 +86,19 @@ export const getContentByID = async (
     next(error);
   }
 };
+
+export const deleteContentById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    await contentModel.findByIdAndDelete(req.params.id);
+    res.status(201).json({
+      success: true,
+      message: "Content deleted successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
