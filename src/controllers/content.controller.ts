@@ -1,17 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import tagModel from "../model/tag.model";
 import contentModel from "../model/content.model";
-import userModel from "../model/user.model";
 import mongoose from "mongoose";
 import { UnauthorizedError } from "../utils/errors/app.error";
-
-// Extend the Request type to include user information
-interface AuthenticatedRequest extends Request {
-  user?: {
-    _id: string;
-    email: string;
-  };
-}
+import { AuthenticatedRequest } from "../types";
 
 export const addContent = async (
   req: AuthenticatedRequest,

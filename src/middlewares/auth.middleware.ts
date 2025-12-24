@@ -1,15 +1,8 @@
-import { NextFunction, Request, Response } from "express";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import { NextFunction, Response } from "express";
+import jwt from "jsonwebtoken";
 import { UnauthorizedError } from "../utils/errors/app.error";
 import { serverConfig } from "../config";
-
-// Extend the Request type to include user information
-interface AuthenticatedRequest extends Request {
-  user?: {
-    _id: string;
-    email: string;
-  };
-}
+import { AuthenticatedRequest } from "../types";
 
 export const isAuthenticated = (
   req: AuthenticatedRequest,
