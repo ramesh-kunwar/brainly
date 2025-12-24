@@ -24,14 +24,14 @@ export const signupUser = async (
 
   const hashedPassword = await bcrypt.hash(password, serverConfig.SALT_ROUND);
 
-  const token = jwt.sign({ email }, serverConfig.JWT_SECRET, {
-    expiresIn: "10d",
-  });
-
   const user = await userModel.create({
     username,
     email,
     password: hashedPassword,
+  });
+
+  const token = jwt.sign({ _id: user.id, email }, serverConfig.JWT_SECRET, {
+    expiresIn: "10d",
   });
 
   const statusCode = 201;
@@ -65,7 +65,7 @@ export const loginUser = async (
     throw new InvalidCredentialsError();
   }
 
-  const token = jwt.sign({ email }, serverConfig.JWT_SECRET, {
+  const token = jwt.sign({ _id: user.id, email }, serverConfig.JWT_SECRET, {
     expiresIn: "10d",
   });
 

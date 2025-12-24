@@ -4,7 +4,7 @@ export const contentTypes = ["image", "video", "article", "audio"] as const;
 export const contentSchema = z.object({
   link: z
     .string({
-      required_error: "username is required",
+      required_error: "Link is required",
     })
     .min(1),
   title: z.string({ required_error: "Content Title is required." }),
@@ -12,6 +12,5 @@ export const contentSchema = z.object({
   type: z.enum(contentTypes, {
     required_error: "Content Type is required",
   }),
-  userId: z.string(),
-  tags: z.string(),
+  tagTitle: z.string().optional(), // Make tagTitle optional
 });

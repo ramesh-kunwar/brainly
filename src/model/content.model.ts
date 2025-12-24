@@ -24,7 +24,7 @@ const contentModel = new mongoose.Schema(
     tags: {
       type: mongoose.Types.ObjectId,
       ref: "Tag",
-      requried: true,
+      required: false, // Changed to optional to handle undefined case
     },
   },
   { timestamps: true }
