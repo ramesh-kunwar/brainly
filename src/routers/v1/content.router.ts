@@ -4,6 +4,7 @@ import { contentSchema } from "../../validators/content.validator";
 import {
   addContent,
   getAllContent,
+  getContentByID,
 } from "../../controllers/content.controller";
 import { isAuthenticated } from "../../middlewares/auth.middleware";
 
@@ -17,4 +18,11 @@ contentRouter.post(
 );
 
 contentRouter.get("/", isAuthenticated, getAllContent);
+
+contentRouter.get(
+  "/:id",
+  isAuthenticated,
+
+  getContentByID
+);
 export default contentRouter;

@@ -67,3 +67,22 @@ export const getAllContent = async (
     next(error);
   }
 };
+
+export const getContentByID = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const content = await contentModel
+      .findById(req.params.id)
+      .populate({ path: "tags" });
+    res.status(201).json({
+      success: true,
+      message: "Content fetched successfully",
+      data: content,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
